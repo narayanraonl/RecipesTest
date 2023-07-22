@@ -73,7 +73,7 @@ app.get('/yourrecipe',function(req,res){
     }
 })
 
-app.post('/yourrecipe',function(req,res){
+app.post('/yourrecipe',async function(req,res){
     var head=req.body.title;
     var ind=req.body.ingrediants;
     var desp=req.body.description;
@@ -82,7 +82,7 @@ app.post('/yourrecipe',function(req,res){
         ingrediants:ind,
         description:desp
     });
-    newrecipe.save();
+    await newrecipe.save();
     res.redirect('/posts')
 });
 
