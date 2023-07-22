@@ -25,44 +25,16 @@
 
             </ul>
         </nav>
-<div class="post">
-    <div></div>
-    <div class="post-con">
-    <% recipePost.forEach(function(recipe){%>
-        <div class="potato">
-        <h3><%=recipe.title%></h3>
-        <h4>Ingredients:</h4>
-
-        <p><%=recipe.ingrediants%></p>
-        <h4>Cooking instructions:</h4>
-        <p><%=recipe.description%></p>
-        <img id="likebutton" src="like.png" alt="" onclick="changeColor()">
-    </div>
-   
-
-    <%})%>
-</div>
-<div></div>
-
-</div>
-</div>
-<script>
-    function changeColor() {
-        var button = document.getElementById("likeButton");
-
-        if (button) {
-            var currentColor = button.style.backgroundColor;
-
-            if (currentColor === "red") {
-                button.style.backgroundColor = "white";
-            } else {
-                button.style.backgroundColor = "red";
-            }
-        }
-    }
-</script>
-</body>
-
-<%- include('footer')%>
-
-</html>
+        <div>
+            <% recipePost.forEach(function(recipe){%>
+                <div class="postsitem">
+                    <h3><%=recipe.title%></h3>
+                    <h4>Ingredients:</h4>
+        
+                    <p><%=recipe.ingrediants%></p>
+                    <h4>Cooking instructions:</h4>
+                    <p><%=recipe.description%></p>
+                </div>
+            <%})%>
+        </div>
+        <%- include('footer')%>
