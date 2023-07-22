@@ -2,28 +2,23 @@
 <div class="signin">
     <div></div>
     <div class="signin-con">
-    <h3>Signup to share!
-    </h3>
-    <div class="form-con">
+<h3>Sign Up to Share</h3>
 <form action="/signup" method="post">
-    
-
-    <h4>Email</h4>
-    <input type="email" name="remail">
-    <h4>Username</h4>
-    <input type="text" name="rname">
-    <h4>Password</h4>
-    <input type="password" name="rpass">
-    <div>
-        <button>Register</button>
-        
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input name="remail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input name="rname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
     </div>
-</form>
-</div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input name="rpass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 <div></div>
-</div>
 </body>
 </html>
-
-
