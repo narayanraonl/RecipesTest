@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Recipes</title>
+</head>
+<body>
+    <div class="recbg">
+        <nav>
+            <ul class="nav1">
+                <li>Chef-Up</li>
+                
+            </ul>
+            <ul class="nav2">
+                <a href="/"><li>Home</li></a>
+
+                <a href="/recipe"><li>Recipes</li></a>
+                <a href="/posts"><li>Posts</li></a>
+                <a href="/yourrecipe"><li>Your Recipes</li></a>
+                <a href="/<%=change%>"><li><%=change%></li></a>
+
+            </ul>
+        </nav>
+        <div class="formstyle">
+            <div></div>
+            <div class="f-1">
+        <form action="/recipe" method="post">
+            <input type="text" name="recipe" placeholder="Search for recipes here...">
+            <button type="btn btn-primary">Go</button>
+        </form>
+</div>
+</div>
+</div>
+
+<%- include('footer')%>

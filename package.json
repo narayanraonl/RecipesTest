@@ -1,0 +1,25 @@
+{
+  "name": "recipe",
+  "version": "1.0.0",
+  "description": "",
+  "proxy":"http://localhost:3000",
+  "main": "app.js",
+   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "ts-node-dev --respawn src/Union.ts",
+    "serve": "ts-node-dev src/function.ts",
+    "build": "tsc"
+  },
+  "author": "Narayan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.10.3",
+    "node-fetch": "^2.6.12"
+  }
+}
