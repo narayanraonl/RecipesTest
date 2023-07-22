@@ -8,7 +8,7 @@ const session = require('express-session');
 const app= express();
 const saltRounds = 10;
 
-url="https://recipe-rvti.onrender.com";
+//url="https://recipe-rvti.onrender.com";
 
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
@@ -38,7 +38,7 @@ var log=false;
 console.log(log);
 
 
-app.get(url+'/',function(req,res){
+app.get('/',function(req,res){
     if(!req.session.user_id){
     res.render('home',{change:"Signin"})
     }
@@ -48,7 +48,7 @@ app.get(url+'/',function(req,res){
 })
 
 
-app.get(url+'/posts',function(req,res){
+app.get('/posts',function(req,res){
     Recipe.find({},function(error,foundrecipe){
         if(error){
             console.log(error)
@@ -64,7 +64,7 @@ app.get(url+'/posts',function(req,res){
     })
 })  
 
-app.get(url+'/yourrecipe',function(req,res){
+app.get('/yourrecipe',function(req,res){
     if(!req.session.user_id){
         res.redirect("/signin");
     }
@@ -73,7 +73,7 @@ app.get(url+'/yourrecipe',function(req,res){
     }
 })
 
-app.post(url+'/yourrecipe',function(req,res){
+app.post('/yourrecipe',function(req,res){
     var head=req.body.title;
     var ind=req.body.ingrediants;
     var desp=req.body.description;
@@ -93,7 +93,7 @@ var dishinst="";
 var image="";
 var youtube="";
 
-app.get(url+'/recipe', function(req, res) {
+app.get('/recipe', function(req, res) {
     if(!req.session.user_id){
         res.render('recipe',{change:"Signin"})
     }
@@ -103,7 +103,7 @@ app.get(url+'/recipe', function(req, res) {
 });
 
 
-app.post(url+'/recipe',function(req,res){
+app.post('/recipe',function(req,res){
     const query=req.body.recipe;
     const url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+query+"";
     fetch(url)
@@ -121,15 +121,15 @@ app.post(url+'/recipe',function(req,res){
 })
 
 
-app.get(url+'/recipeview',function(req,res){
+app.get('/recipeview',function(req,res){
     res.render('recipeview',{name:dishname,cat:dishcategory,org:dishArea,instruct:dishinst,pic:image,link:youtube});
 })
 
-app.get(url+'/signin',function(req,res){
+app.get('/signin',function(req,res){
     res.render('Signin');
 })
 
-app.post(url+'/signin',function(req,res){
+app.post('/signin',function(req,res){
     const uname=req.body.name;
     const upass=req.body.pass;
     Login.findOne({name:uname},function(err,founduser){
@@ -151,11 +151,11 @@ app.post(url+'/signin',function(req,res){
     })
 })
 
-app.get(url+'/signup',function(req,res){
+app.get('/signup',function(req,res){
     res.render('signup');
 })
 
-app.post(url+'/signup',function(req,res){
+app.post('/signup',function(req,res){
     const data= req.body.rpass;
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(data, salt, function(err, hash) {
@@ -173,7 +173,7 @@ app.post(url+'/signup',function(req,res){
     
 })
 
-app.get(url+'/Logout',function(req,res){
+app.get('/Logout',function(req,res){
     req.session.destroy();
     res.redirect('/');
 })
