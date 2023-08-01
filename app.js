@@ -8,7 +8,7 @@ const session = require('express-session');
 const app= express();
 const saltRounds = 10;
 
-//url="https://recipe-rvti.onrender.com";
+//url="https://recipe-nlnr.onrender.com";
 
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
