@@ -126,7 +126,7 @@ app.get('/recipeview',function(req,res){
 })
 
 app.get('/signin',function(req,res){
-    res.render('Signin');
+    res.render('Signin' , {loginStatus:"valid"});
 })
 
 app.post('/signin',function(req,res){
@@ -144,33 +144,46 @@ app.post('/signin',function(req,res){
                     res.redirect('/yourrecipe');
                 }
                 else{
-                    res.redirect('/signin');
+                    //alert("User not found");
+                    res.render('Signin',{loginStatus: "invalid_pass"});
                 }
             });
+        }
+        else{
+            res.render('Signin',{loginStatus: "invalid_id"});
         }
     })
 })
 
 app.get('/signup',function(req,res){
-    res.render('signup');
+    res.render('signup',{signupStatus : "valid"});
 })
 
 app.post('/signup',function(req,res){
     const data= req.body.rpass;
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(data, salt, function(err, hash) {
-            const newuser= new Login({
-                email:req.body.remail,
-                name:req.body.rname,
-                password:hash
-            })
-            newuser.save();
-            req.session.user_id = newuser.id;
-            res.redirect('/');
-        });
-    });
-    
-    
+    const email=req.body.remail;
+    Login.findOne({email:email},function(err,founduser){
+        if(err){
+            console.log(err);
+        }
+        else if(founduser){
+            res.render('signup',{signupStatus : "user_exists"})
+        }
+        else{
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                bcrypt.hash(data, salt, function(err, hash) {
+                    const newuser= new Login({
+                        email:req.body.remail,
+                        name:req.body.rname,
+                        password:hash
+                    })
+                    newuser.save();
+                    req.session.user_id = newuser.id;
+                    res.redirect('/');
+                });
+            });
+        }
+    })
 })
 
 app.get('/Logout',function(req,res){
