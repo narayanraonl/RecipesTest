@@ -34,6 +34,9 @@
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form action="/signup" method="post">
                 <!-- Email input -->
+                <% if(signupStatus==='user_exists'){ %>
+                  <h6 style="color: red; text-decoration: underline;"> Email already exists </h6>
+                <% } %>
                 <div class="form-outline mb-4">
                   <input name="remail" type="email" id="form3Example3" class="form-control form-control-lg"
                     placeholder="Enter a valid email address" />
